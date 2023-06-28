@@ -100,7 +100,7 @@ public class SoundManager : MonoBehaviour
         // Œ©‚Â‚©‚ç‚È‚©‚Á‚½‚ç
         else
         {
-            Debug.LogWarning($"‚»‚Ì•Ê–¼‚Í“o˜^‚³‚¹‚Ä‚¢‚Ü‚¹‚ñ : {name}");
+            Debug.LogWarning($"‚»‚Ì•Ê–¼‚Í“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ : {name}");
         }
     }
 }
