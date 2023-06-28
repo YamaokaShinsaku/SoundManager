@@ -5,9 +5,8 @@ using static Unity.VisualScripting.Member;
 
 public class SoundTest : MonoBehaviour
 {
-    // スピーカー・CDプレイヤー
     [SerializeField]
-    private AudioSource audioSource;
+    private SoundManager soundManager;
     // 音源データ１
     [SerializeField]
     private AudioClip clip1;
@@ -21,17 +20,13 @@ public class SoundTest : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) 
         {
-            // 再生したいclipを指定
-            audioSource.clip = clip1; 
-            // 再生
-            audioSource.Play();
+            // SoundManagerで音を再生
+            soundManager.PlaySound(clip1);
         }
         if (Input.GetMouseButtonDown(1)) 
         {
-            //再生したいclipを指定
-            audioSource.clip = clip2; 
-            // 再生
-            audioSource.Play(); 
+            // SoundManagerで音を再生
+            soundManager.PlaySound(clip2);
         }
     }
 }
