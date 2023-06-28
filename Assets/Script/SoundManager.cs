@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    /// <summary>
+    /// 音源データ
+    /// </summary>
+    [System.Serializable]
+    public class SoundData
+    {
+        // サウンド名
+        public string name;
+        // 音源データ
+        public AudioClip audioClip;
+    }
+
+
     // AudioSourceを同時に鳴らしたい音の数だけ用意する
     private AudioSource[] audioSourceList = new AudioSource[20];
+
+    [SerializeField]
+    private SoundData[] soundDatas;
 
     private void Awake()
     {
