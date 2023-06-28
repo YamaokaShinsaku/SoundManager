@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class SoundManager : MonoBehaviour
         public AudioClip audioClip;
     }
 
+    // 別名(name)をキーとした管理用Dictionary
+    private Dictionary<string, SoundData> soundDictionary = new Dictionary<string, SoundData>();
 
     // AudioSourceを同時に鳴らしたい音の数だけ用意する
     private AudioSource[] audioSourceList = new AudioSource[20];
@@ -29,6 +32,12 @@ public class SoundManager : MonoBehaviour
         for(var i = 0; i < audioSourceList.Length; i++)
         {
             audioSourceList[i] = gameObject.AddComponent<AudioSource>();
+        }
+
+        // soundDirectionaryにセット
+        foreach(var soundData in soundDatas)
+        {
+            soundDictionary.Add(soundData.name, soundData);
         }
     }
 
@@ -74,5 +83,24 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = clip;
         // 音を再生
         audioSource.Play();
+    }
+
+    /// <summary>
+    /// 設定された別名(サウンド名)で登録されたAudioClipを再生
+    /// </summary>
+    /// <param name="name">設定した別名</param>
+    public void PlaySound(string name)
+    {
+        // 管理用Directionaryから、別名(サウンド名）で検索
+        if(soundDictionary.TryGetValue(name, out var soundData))
+        {
+            // 見つかったら、再生
+            PlaySound(soundData.audioClip);
+        }
+        // 見つからなかったら
+        else
+        {
+            Debug.LogWarning($"その別名は登録させていません : {name}");
+        }
     }
 }
