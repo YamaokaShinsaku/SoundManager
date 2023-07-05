@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
         public string name;
         // 音源データ
         public AudioClip audioClip;
+        // 前回再生した時間
+        public float playedTime;
     }
 
     // 別名(name)をキーとした管理用Dictionary
@@ -22,6 +24,10 @@ public class SoundManager : MonoBehaviour
 
     // AudioSourceを同時に鳴らしたい音の数だけ用意する
     private AudioSource[] audioSourceList = new AudioSource[20];
+
+    // 一度再生してから、次再生するまでの間隔（秒）
+    [SerializeField]
+    private float playableDistance = 0.2f;
 
     [SerializeField]
     private SoundData[] soundDatas;
@@ -94,6 +100,13 @@ public class SoundManager : MonoBehaviour
         // 管理用Directionaryから、別名(サウンド名）で検索
         if(soundDictionary.TryGetValue(name, out var soundData))
         {
+            // まだ再生するには早い場合
+            if(Time.realtimeSinceStartup - soundData.playedTime < playableDistance)
+            {
+                return;
+            }
+            // 次回の再生用に、今回の再生時間を保持する
+            soundData.playedTime = Time.realtimeSinceStartup;
             // 見つかったら、再生
             PlaySound(soundData.audioClip);
         }

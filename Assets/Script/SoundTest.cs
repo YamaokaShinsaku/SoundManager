@@ -32,10 +32,10 @@ public class SoundTest : MonoBehaviour
             // SoundManager‚Å‰¹‚ğÄ¶
             soundManager.PlaySound("•XƒOƒ‰ƒX");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKey(KeyCode.Alpha0))
         {
             // SoundManager‚Å‰¹‚ğÄ¶
-            soundManager.PlaySound("‚È‚µ");
+            soundManager.PlaySound("•——é");
         }
     }
 }
