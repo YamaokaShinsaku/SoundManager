@@ -29,8 +29,8 @@ public class SoundManager : MonoBehaviour
     // 別名(name)をキーとした管理用Dictionary
     private Dictionary<string, SoundData> soundDictionary = new Dictionary<string, SoundData>();
 
-    // AudioSourceを同時に鳴らしたい音の数だけ用意する
-    private AudioSource[] audioSourceList = new AudioSource[20];
+    // AudioSourceを用意する
+    private AudioSource[] audioSourceList;
 
     [SerializeField]
     private SoundData[] soundDatas;
@@ -129,8 +129,8 @@ public class SoundManager : MonoBehaviour
     /// <summary>
     /// 設定された別名(サウンド名)、間隔で登録されたAudioClipを再生
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="intervalTime"></param>
+    /// <param name="name">設定した別名</param>
+    /// <param name="intervalTime">再生間隔</param>
     public void PlaySound(string name, float intervalTime)
     {
         // 管理用Directionaryから、別名(サウンド名）で検索
