@@ -107,10 +107,10 @@ public class SoundManager : MonoBehaviour
             }
             // 次回の再生用に、今回の再生時間を保持する
             soundData.playedTime = Time.realtimeSinceStartup;
-            // 見つかったら、再生
+            // 音源が見つかったら、再生
             PlaySound(soundData.audioClip);
         }
-        // 見つからなかったら
+        // 音源が見つからなかったら
         else
         {
             Debug.LogWarning($"その別名は登録されていません : {name}");
