@@ -7,12 +7,6 @@ public class SoundTest : MonoBehaviour
 {
     [SerializeField]
     private SoundManager soundManager;
-    // ‰¹Œ¹ƒf[ƒ^‚P
-    [SerializeField]
-    private AudioClip clip1;
-    // ‰¹Œ¹ƒf[ƒ^‚Q
-    [SerializeField]
-    private AudioClip clip2;
 
 
     // Update is called once per frame
@@ -41,7 +35,7 @@ public class SoundTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             // SoundManager‚Å‰¹‚ğÄ¶
-            soundManager.PlaySound("“o˜^‚µ‚Ä‚¢‚È‚¢");
+            soundManager.PlaySound("‚È‚µ");
         }
     }
 }
