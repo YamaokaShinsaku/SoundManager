@@ -15,9 +15,16 @@ public class SoundManager : MonoBehaviour
         public string name;
         // 音源データ
         public AudioClip audioClip;
+        // 音量
+        [Range(0.0f, 1.0f)]
+        public float volume = 1.0f;
         // 前回再生した時間
         public float playedTime;
     }
+
+    // 最大同時再生数
+    [Range(5, 25)]
+    public int maxSoundTrack = 10;
 
     // 別名(name)をキーとした管理用Dictionary
     private Dictionary<string, SoundData> soundDictionary = new Dictionary<string, SoundData>();
@@ -34,6 +41,9 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        // maxSoundTrack分のAudioSourceを格納
+        audioSourceList = new AudioSource[maxSoundTrack];
+
         // audioSourceList配列の数だけAudioSourceを自分自身に生成して、配列に格納
         for(var i = 0; i < audioSourceList.Length; i++)
         {
@@ -51,8 +61,7 @@ public class SoundManager : MonoBehaviour
     /// 未使用のAudioSourceの取得
     /// </summary>
     /// <returns>
-    /// 未使用のAudioSource
-    /// すべて使用中の場合は null を返す
+    /// 未使用のAudioSource(すべて使用中の場合は null)
     /// </returns>
     private AudioSource GetUnusedAudioSource()
     {
@@ -74,7 +83,9 @@ public class SoundManager : MonoBehaviour
     /// 指定されたAudioClipを未使用のAudioSourceで再生
     /// </summary>
     /// <param name="clip">音源データ</param>
-    public void PlaySound(AudioClip clip)
+    /// <param name="volume">音量</param>
+    /// SoundManager内部で使用
+    public void PlaySound(AudioClip clip, float volume)
     {
         // 未使用のAudioSourceを取得
         var audioSource = GetUnusedAudioSource();
@@ -87,6 +98,8 @@ public class SoundManager : MonoBehaviour
         }
         // 音源を取得
         audioSource.clip = clip;
+        // 音量を取得
+        audioSource.volume = volume;
         // 音を再生
         audioSource.Play();
     }
@@ -108,7 +121,7 @@ public class SoundManager : MonoBehaviour
             // 次回の再生用に、今回の再生時間を保持する
             soundData.playedTime = Time.realtimeSinceStartup;
             // 音源が見つかったら、再生
-            PlaySound(soundData.audioClip);
+            PlaySound(soundData.audioClip, soundData.volume);
         }
         // 音源が見つからなかったら
         else
