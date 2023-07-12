@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSoundTrack: 10
-  playableDistance: 0.2
   soundDatas:
   - name: "\u30C0\u30A4\u30D3\u30F3\u30B0"
     audioClip: {fileID: 8300000, guid: 465853aa28cca684a88d310d3843ae5b, type: 3}
@@ -171,6 +170,12 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 26917ae27b58dd14b8359687868fdffa, type: 3}
     volume: 1
     playedTime: 0
+  bgmSoundDatas:
+  - name: BGM
+    audioClip: {fileID: 8300000, guid: 71bb61fc8db85d6449d1804142500e74, type: 3}
+    volume: 1
+    playedTime: 0
+    soundLoop: 1
 --- !u!4 &603432792
 Transform:
   m_ObjectHideFlags: 0

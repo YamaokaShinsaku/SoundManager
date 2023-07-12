@@ -8,7 +8,6 @@ public class SoundTest : MonoBehaviour
     [SerializeField]
     private SoundManager soundManager;
 
-
     // Update is called once per frame
     void Update()
     {
@@ -36,6 +35,11 @@ public class SoundTest : MonoBehaviour
         {
             // SoundManager‚Å‰¹‚ğÄ¶
             soundManager.PlaySound("•——é");
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            // SoundManager‚Å‰¹‚ğÄ¶
+            soundManager.PlayBGM("BGM",3.0f);
         }
     }
 }
