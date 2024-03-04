@@ -82,7 +82,7 @@ public class SoundManager : MonoBehaviour
 
         /// BGM  ///
         // maxSoundTrack•ª‚ÌAudioSource‚ğŠi”[
-        bgmAudioSourceList = new AudioSource[maxSoundTrack];
+        bgmAudioSourceList = new AudioSource[1];
 
         // audioSourceList”z—ñ‚Ì”‚¾‚¯AudioSource‚ğ©•ª©g‚É¶¬‚µ‚ÄA”z—ñ‚ÉŠi”[
         for (var i = 0; i < bgmAudioSourceList.Length; i++)

@@ -22,12 +22,8 @@ public class AudioSetting : MonoBehaviour
     [SerializeField]
     AudioSource seAudioSource;
 
-    // BGM・SEを格納するリスト
-    public List<AudioClip> bgmLists;
-    public List<AudioClip> seLists;
-
     // 音量管理UIが開かれているかどうか
-    public bool isOpenSettingPanel = false;
+    //public bool isOpenSettingPanel = false;
 
     public static AudioSetting instance;
 
@@ -64,18 +60,25 @@ public class AudioSetting : MonoBehaviour
         // スライダーの値に応じて音量を変更
         bgmAudioSource.volume = newVolume;
     }
-
+    /// <summary>
+    /// SEの音量を変更
+    /// </summary>
     void ChangeSEVolume(float newVolume)
     {
         // スライダーの値に応じて音量を変更
         seAudioSource.volume = newVolume;
     }
 
+    /// <summary>
+    /// BGMの音量を返す
+    /// </summary>
     public float ReturnBGMVolume()
     {
         return bgmVolumeSlider.value * masterVolumeSlider.value;
     }
-
+    /// <summary>
+    /// SEの音量を返す
+    /// </summary>
     public float ReturnSEVolume()
     {
         return seVolumeSlider.value * masterVolumeSlider.value;
