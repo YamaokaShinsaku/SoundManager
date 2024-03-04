@@ -97,6 +97,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        UpdateSEVolume();
+        UpdateBGMVolume();
+    }
+
     /// <summary>
     /// 未使用のAudioSourceの取得
     /// </summary>
@@ -240,7 +246,8 @@ public class SoundManager : MonoBehaviour
         // 音源を取得
         bgmAudioSource.clip = clip;
         // 音量を取得
-        bgmAudioSource.volume = volume;
+        //bgmAudioSource.volume = volume;
+        bgmAudioSource.volume = AudioSetting.instance.ReturnBGMVolume();
         // 音を再生
         bgmAudioSource.Play();
         // ループ再生フラグの設定
@@ -291,6 +298,35 @@ public class SoundManager : MonoBehaviour
         else
         {
             Debug.LogWarning($"その別名は登録されていません : {name}");
+        }
+    }
+
+
+    /// <summary>
+    /// 再生中のSEの音量の調整
+    /// </summary>
+    public void UpdateSEVolume()
+    {
+        foreach (var audioSource in audioSourceList)
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.volume = AudioSetting.instance.ReturnSEVolume();
+            }
+        }
+    }
+
+    /// <summary>
+    /// 再生中のBGMの音量の調整
+    /// </summary>
+    public void UpdateBGMVolume()
+    {
+        foreach(var audioSource in bgmAudioSourceList)
+        {
+            if(audioSource.isPlaying)
+            {
+                audioSource.volume = AudioSetting.instance.ReturnBGMVolume();
+            }
         }
     }
 }
