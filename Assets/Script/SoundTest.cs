@@ -14,27 +14,27 @@ public class SoundTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1)) 
         {
             // SoundManagerで音を再生
-            soundManager.PlaySound("打ち上げ花火");
+            soundManager.PlaySE("打ち上げ花火");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) 
         {
             // SoundManagerで音を再生
-            soundManager.PlaySound("風鈴");
+            soundManager.PlaySE("風鈴");
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             // SoundManagerで音を再生
-            soundManager.PlaySound("ダイビング");
+            soundManager.PlaySE("ダイビング");
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             // SoundManagerで音を再生
-            soundManager.PlaySound("氷グラス");
+            soundManager.PlaySE("氷グラス");
         }
         if (Input.GetKey(KeyCode.Alpha0))
         {
             // SoundManagerで音を再生
-            soundManager.PlaySound("風鈴");
+            soundManager.PlaySE("風鈴");
         }
         if (Input.GetKeyDown(KeyCode.A))
         {

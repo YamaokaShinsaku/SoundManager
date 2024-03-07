@@ -153,7 +153,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="clip">音源データ</param>
     /// <param name="volume">音量</param>
     /// SoundManager内部で使用
-    public void PlaySound(AudioClip clip, float volume)
+    public void PlaySE(AudioClip clip, float volume)
     {
         // 未使用のAudioSourceを取得
         var audioSource = GetUnusedAudioSource();
@@ -176,7 +176,7 @@ public class SoundManager : MonoBehaviour
     /// 設定された別名(サウンド名)で登録されたAudioClipを再生
     /// </summary>
     /// <param name="name">設定した別名</param>
-    public void PlaySound(string name)
+    public void PlaySE(string name)
     {
         // 管理用Directionaryから、別名(サウンド名）で検索
         if(soundDictionary.TryGetValue(name, out var soundData))
@@ -189,7 +189,7 @@ public class SoundManager : MonoBehaviour
             // 次回の再生用に、今回の再生時間を保持する
             soundData.playedTime = Time.realtimeSinceStartup;
             // 音源が見つかったら、再生
-            PlaySound(soundData.audioClip, soundData.volume);
+            PlaySE(soundData.audioClip, soundData.volume);
         }
         // 音源が見つからなかったら
         else
@@ -203,7 +203,7 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     /// <param name="name">設定した別名</param>
     /// <param name="intervalTime">再生間隔</param>
-    public void PlaySound(string name, float intervalTime)
+    public void PlaySE(string name, float intervalTime)
     {
         // 管理用Directionaryから、別名(サウンド名）で検索
         if (soundDictionary.TryGetValue(name, out var soundData))
@@ -216,7 +216,7 @@ public class SoundManager : MonoBehaviour
             // 次回の再生用に、今回の再生時間を保持する
             soundData.playedTime = Time.realtimeSinceStartup;
             // 音源が見つかったら、再生
-            PlaySound(soundData.audioClip, soundData.volume);
+            PlaySE(soundData.audioClip, soundData.volume);
         }
         // 音源が見つからなかったら
         else
